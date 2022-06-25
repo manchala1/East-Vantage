@@ -42,3 +42,9 @@ def update_address(id: int, request: schemas.Address,db : Session = Depends(get_
     address.lng = request.lng
     db.commit()
     return address
+
+# retrieve all the addresses that are between the coordinates 
+@app.get('/addresses/{lat}/{lng}')
+def get_address_by_coordinates(lat: float, lng: float,db : Session = Depends(get_db)):
+    address = db.query(models.Address).filter(models.Address.lat <= lat, models.Address.lng <= lng).all()
+    return address
