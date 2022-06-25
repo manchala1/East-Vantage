@@ -1,7 +1,7 @@
 from .db import Base, SessionLocal, get_db
 from sqlalchemy import Column, Integer, String
 
-class Address(Base): # Address Models
+class Address(Base): # Address Model
     __tablename__ = "address"
     id = Column(Integer, primary_key=True, index=True)
     street = Column(String, nullable=False)
